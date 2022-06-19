@@ -1,6 +1,12 @@
 .App {
   text-align: center;
 }
+html{
+  scroll-behavior: smooth;
+}
+body {
+  scroll-padding-top: 70px; /* height of sticky header */
+}
 
 .App-logo {
   height: 40vmin;
