@@ -8,7 +8,7 @@ import { experiences } from "../../constants/experiences";
 export const ExperiencePage: FunctionComponent = () => (
   <Page title="Experience">
     {experiences.map(({ title, accomplishments }) => (
-      <ExperienceItem title={title} accomplishments={accomplishments} />
+      <ExperienceItem key={title} title={title} accomplishments={accomplishments} />
     ))}
     {/* ​​2015 - 2016​Software developer– Puget Works
 + Created an Ionic 1 app prototype for client.

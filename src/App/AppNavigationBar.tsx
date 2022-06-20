@@ -14,6 +14,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { pages } from "../pages";
 
 export const AppNavigationBar = () => {
@@ -22,7 +23,8 @@ export const AppNavigationBar = () => {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+  const { hash } = useLocation();
+  const selectedRoute = hash ? hash.slice(1) : 'About';
   const drawer = (
     <Box
       onClick={handleDrawerToggle}
@@ -36,7 +38,7 @@ export const AppNavigationBar = () => {
           background: "#404923",
           borderTop: "1px solid black",
           display: "flex",
-          justifyContent: 'space-between',
+          justifyContent: "space-between",
         }}
       >
         <Typography variant="h6" component="div" color="#D5D7CE">
@@ -62,13 +64,18 @@ export const AppNavigationBar = () => {
             }}
           >
             <ListItemButton
-              sx={{ textAlign: "center" }}
+              sx={{
+                textAlign: "center",
+              }}
               LinkComponent="a"
               href={`#${label}`}
             >
               <ListItemText
                 primary={label}
-                sx={{ color: "#D5D7CE", textTransform: "capitalize" }}
+                sx={{
+                  textTransform: "capitalize",
+                  color: selectedRoute === label ? "white" : "#D5D7CE",
+                }}
               />
             </ListItemButton>
           </ListItem>
@@ -112,7 +119,7 @@ export const AppNavigationBar = () => {
             {pages.map(({ label }) => (
               <Button
                 key={label}
-                sx={{ color: "#D5D7CE" }}
+                sx={{ color: selectedRoute === label ? "white" : "#D5D7CE" }}
                 LinkComponent="a"
                 href={`#${label}`}
               >

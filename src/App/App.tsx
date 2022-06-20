@@ -3,18 +3,23 @@ import { FunctionComponent } from "react";
 import { pages } from "../pages";
 import "./App.css";
 import { AppNavigationBar } from "./AppNavigationBar";
-import { theme } from '../theme'
+import { theme } from "../theme";
+import { BrowserRouter } from "react-router-dom";
 
 export const App: FunctionComponent = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Box>
-        <CssBaseline />
-        <AppNavigationBar />
-        <Box component="main" px={3}>
-          {pages.map(({ content }) => content)}
+      <BrowserRouter>
+        <Box>
+          <CssBaseline />
+          <AppNavigationBar />
+          <Box component="main" px={3}>
+            {pages.map(({ content, label }) => (
+              <div key={label}>{content}</div>
+            ))}
+          </Box>
         </Box>
-      </Box>
+      </BrowserRouter>
     </ThemeProvider>
   );
 };
