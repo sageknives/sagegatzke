@@ -1,9 +1,8 @@
-import { Menu } from "@mui/icons-material";
+import { Close, Menu } from "@mui/icons-material";
 import {
   AppBar,
   Box,
   Button,
-  Divider,
   Drawer,
   IconButton,
   List,
@@ -15,32 +14,9 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useState } from "react";
+import { pages } from "../pages";
 
-interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window?: () => Window;
-}
-
-const pages = [
-  {
-    label: "home",
-    href: "#home",
-  },
-  {
-    label: "about",
-    href: "#about",
-  },
-  {
-    label: "contact",
-    href: "#contact",
-  },
-];
-
-export const AppNavigationBar = (props: Props) => {
-  const { window } = props;
+export const AppNavigationBar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const isDesktop = useMediaQuery("sm");
   const handleDrawerToggle = () => {
@@ -51,23 +27,49 @@ export const AppNavigationBar = (props: Props) => {
     <Box
       onClick={handleDrawerToggle}
       sx={{ textAlign: "center" }}
-      height="75vh"
+      maxHeight="75vh"
       display="flex"
       flexDirection="column"
     >
-      <Typography variant="h6" sx={{ my: 2 }} flex="none">
-        Sage Gatzke
-      </Typography>
-      <Divider />
-      <List sx={{ flex: "1 1 auto", overflow: "scroll" }}>
-        {pages.map(({ label, href }) => (
-          <ListItem key={label} disablePadding>
+      <Toolbar
+        sx={{
+          background: "#404923",
+          borderTop: "1px solid black",
+          display: "flex",
+          justifyContent: 'space-between',
+        }}
+      >
+        <Typography variant="h6" component="div" color="#D5D7CE">
+          Sage Gatzke
+        </Typography>
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          edge="start"
+          onClick={handleDrawerToggle}
+          sx={{ mr: 2, display: { sm: "none" }, color: "#D5D7CE" }}
+        >
+          <Close />
+        </IconButton>
+      </Toolbar>
+      <List sx={{ flex: "1 1 auto", overflow: "scroll" }} disablePadding>
+        {pages.map(({ label }) => (
+          <ListItem
+            key={label}
+            disablePadding
+            sx={{
+              borderTop: "1px solid black",
+            }}
+          >
             <ListItemButton
               sx={{ textAlign: "center" }}
               LinkComponent="a"
-              href={href}
+              href={`#${label}`}
             >
-              <ListItemText primary={label} />
+              <ListItemText
+                primary={label}
+                sx={{ color: "#D5D7CE", textTransform: "capitalize" }}
+              />
             </ListItemButton>
           </ListItem>
         ))}
@@ -75,49 +77,44 @@ export const AppNavigationBar = (props: Props) => {
     </Box>
   );
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
-
   return (
-    // <Box sx={{ display: "flex", height: '100%' }}>
     <>
       <AppBar
         component="nav"
         sx={(theme) => ({
-          position: "sticky",
           top: 0,
           minHeight: 0,
           [theme.breakpoints.down("sm")]: {
-            position: 'fixed',
+            position: "fixed",
             top: "auto",
             bottom: 0,
           },
         })}
       >
         <Toolbar>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: "block", sm: "block" } }}
+          >
+            Sage Gatzke
+          </Typography>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{ mr: 2, display: { sm: "none" }, color: "#D5D7CE" }}
           >
             <Menu />
           </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            Sage Gatzke
-          </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {pages.map(({ label, href }) => (
+            {pages.map(({ label }) => (
               <Button
                 key={label}
-                sx={{ color: "#fff" }}
+                sx={{ color: "#D5D7CE" }}
                 LinkComponent="a"
-                href={href}
+                href={`#${label}`}
               >
                 {label}
               </Button>
@@ -127,7 +124,6 @@ export const AppNavigationBar = (props: Props) => {
       </AppBar>
       <Box component="nav">
         <Drawer
-          container={container}
           variant="temporary"
           anchor={isDesktop ? "left" : "bottom"}
           open={mobileOpen}
@@ -147,6 +143,5 @@ export const AppNavigationBar = (props: Props) => {
         </Drawer>
       </Box>
     </>
-    // </Box>
   );
 };
