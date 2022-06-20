@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/sagegatzke/static/css/main.682edc85.css",
-    "main.js": "/sagegatzke/static/js/main.852ea041.js",
+    "main.js": "/sagegatzke/static/js/main.ee50c6eb.js",
     "static/js/787.dcffbe08.chunk.js": "/sagegatzke/static/js/787.dcffbe08.chunk.js",
     "index.html": "/sagegatzke/index.html",
     "main.682edc85.css.map": "/sagegatzke/static/css/main.682edc85.css.map",
-    "main.852ea041.js.map": "/sagegatzke/static/js/main.852ea041.js.map",
+    "main.ee50c6eb.js.map": "/sagegatzke/static/js/main.ee50c6eb.js.map",
     "787.dcffbe08.chunk.js.map": "/sagegatzke/static/js/787.dcffbe08.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.682edc85.css",
-    "static/js/main.852ea041.js"
+    "static/js/main.ee50c6eb.js"
   ]
 }
