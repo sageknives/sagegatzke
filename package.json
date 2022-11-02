@@ -2,7 +2,7 @@
   "name": "sagegatzke",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sagegatzke.com/",
+  "homepage": "https://sageknives.github.io/sagegatzke/",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
