@@ -6,11 +6,19 @@ export const experiences: Experience[] = [
     accomplishments: [
       {
         description:
-          "Worked on the customer facing portals in react using best practices.",
+          "Worked with Design & Product to deliver features for EOs, Real Estate Agents & Sales Reps.",
       },
       {
         description:
-          "Member of the UI arch team to promote cross team collaboration and knowledge sharing.",
+          "Member of the UI architecture group that created guidelines, best practices, cross team collaboration and knowledge sharing.",
+      },
+      {
+        description:
+          "Member of Doma’s design system team where we set best practices, created a reusable component library, and focused on the engineering experience with better intellisense and declarative code to reduce cognitive load while developing.",
+      },
+      {
+        description:
+          "Worked closely with design to make sure the Figma library and component library were in sync, well documented and reviewed designs for consistency.",
       },
     ],
   },
