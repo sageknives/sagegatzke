@@ -6,7 +6,7 @@ export const experiences: Experience[] = [
     accomplishments: [
       {
         description:
-          "Worked with Design & Product to deliver features for EOs, Real Estate Agents & Sales Reps.",
+          "Worked with Design & Product to deliver features for Escrow Agents, Real Estate Agents & Sales Reps.",
       },
       {
         description:
