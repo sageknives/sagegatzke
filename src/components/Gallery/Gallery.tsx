@@ -24,7 +24,13 @@ export const Gallery: FunctionComponent<GalleryProps> = ({
       flexDirection={direction}
     >
       {images.map(({ src, alt }) => (
-        <img key={src} src={src} alt={alt} width={sizes[size]} height={sizes[size]} />
+        <img
+          key={src}
+          src={src}
+          alt={alt}
+          width={sizes[size]}
+          height={sizes[size]}
+        />
       ))}
     </Box>
   );

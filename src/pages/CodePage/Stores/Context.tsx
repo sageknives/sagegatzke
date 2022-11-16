@@ -27,6 +27,7 @@ const initialValue = {
 const { Provider: FastProvider, useStore } = createFastContext(initialValue);
 const ReactContext = createContext({
   state: initialValue,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onUpdate: (update: Partial<typeof initialValue>) => {},
 });
 

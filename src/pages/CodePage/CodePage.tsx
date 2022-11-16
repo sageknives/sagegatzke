@@ -13,7 +13,7 @@ export const CodePage: FunctionComponent = () => {
     if (isDesktop) {
       console.log("isDesktop");
     }
-  })
+  });
 
   return (
     <Box component="main" display="flex" flexDirection={{ sm: "row" }}>

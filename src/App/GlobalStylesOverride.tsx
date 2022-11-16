@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GlobalStyles } from "@mui/material";
 import { FunctionComponent } from "react";
 
@@ -28,12 +29,12 @@ const mobileSpacingArray = [
 const desktopSpacing = desktopSpacingArray.reduce((acc, { key, value }) => {
   acc[`${key}`] = value;
   return acc;
-}, {} as any)
+}, {} as any);
 
 const mobileSpacing = mobileSpacingArray.reduce((acc, { key, value }) => {
   acc[`${key}`] = value;
   return acc;
-}, {} as any)
+}, {} as any);
 
 export const GlobalStylesOverride: FunctionComponent = () => (
   <GlobalStyles
@@ -46,15 +47,15 @@ export const GlobalStylesOverride: FunctionComponent = () => (
           ...desktopSpacing,
         },
       },
-      '@keyframes render1': {
-        '0%': { 'backgroundColor': 'transparent' },
-        '50%': {' backgroundColor': '#d8b43dd4' },
-        '100%': { 'backgroundCsolor': 'inherit' },
+      "@keyframes render1": {
+        "0%": { backgroundColor: "transparent" },
+        "50%": { " backgroundColor": "#d8b43dd4" },
+        "100%": { backgroundCsolor: "inherit" },
       },
-      '@keyframes render2': {
-        '0%': { 'backgroundColor': 'initial' },
-        '50%': {' backgroundColor': '#d8b43dd4' },
-        '100%': { 'backgroundCsolor': 'inherit' },
+      "@keyframes render2": {
+        "0%": { backgroundColor: "initial" },
+        "50%": { " backgroundColor": "#d8b43dd4" },
+        "100%": { backgroundCsolor: "inherit" },
       },
     }}
   />

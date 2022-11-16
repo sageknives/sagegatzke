@@ -15,7 +15,7 @@ import { Typescript } from "../pages/CodePage/Typescript";
 interface Section {
   label?: string;
   path: string;
-  component: FunctionComponent<{}>;
+  component: FunctionComponent;
 }
 
 const categories = ["Stores", "Typescript", "Components", "Ideas"] as const;
@@ -24,7 +24,7 @@ export interface Page {
   index?: boolean;
   label?: string;
   path?: string;
-  component: FunctionComponent<any>;
+  component: FunctionComponent;
   pages?: Page[];
   sections?: Section[];
   category?: typeof categories[number];
@@ -61,7 +61,7 @@ export const Pages: { [x: string]: Page } = {
     pages: [
       {
         index: true,
-        path: '',
+        path: "",
         component: SideBar,
         label: SideBar.displayName,
       },

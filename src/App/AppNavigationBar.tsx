@@ -73,6 +73,7 @@ export const AppNavigationBar = () => {
         {globalNavigation.map(({ label, path }) => (
           <ListItem
             key={label}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             button
             component={Link}

@@ -13,6 +13,7 @@ import { codeSections } from "../../constants";
 export const SideBar: FunctionComponent<{
   onClose?: () => void;
   sidebar?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
 }> = ({ onClose = () => {}, sidebar = false }) => (
   <Page p={0} mt="var(--space100)">
     <List
@@ -43,6 +44,7 @@ export const SideBar: FunctionComponent<{
                 {examples?.map((example) => (
                   <ListItem
                     key={example}
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
                     button
                     component={Link}

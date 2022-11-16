@@ -5,7 +5,9 @@ import { Pages } from "../../constants";
 export const RootPage: FunctionComponent = () => (
   <Box component="main">
     {Pages.home?.sections?.map(({ component: Component, label }) => (
-      <div key={label}><Component /></div>
+      <div key={label}>
+        <Component />
+      </div>
     ))}
   </Box>
 );

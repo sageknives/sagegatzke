@@ -1,6 +1,8 @@
 import { Gallery } from "../types";
-const isLocal = window.location.hostname.includes('local')
-const path = isLocal ?'/images/' : 'https://sageknives.github.io/sagegatzke/images/'
+const isLocal = window.location.hostname.includes("local");
+const path = isLocal
+  ? "/images/"
+  : "https://sageknives.github.io/sagegatzke/images/";
 export const gallery: Gallery = {
   images: [
     {

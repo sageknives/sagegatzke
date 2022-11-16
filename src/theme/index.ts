@@ -17,6 +17,5 @@ export const theme = createTheme({
         },
       },
     },
-
   },
 });

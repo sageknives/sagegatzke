@@ -5,7 +5,11 @@ export interface PageProps extends BoxProps {
   title?: string;
 }
 
-export const Page: FunctionComponent<PageProps> = ({ title, children, ...props }) => (
+export const Page: FunctionComponent<PageProps> = ({
+  title,
+  children,
+  ...props
+}) => (
   <Box id={`${title}`} minHeight="100vh" px={3} pt={2} {...props}>
     <Toolbar
       sx={(theme) => ({

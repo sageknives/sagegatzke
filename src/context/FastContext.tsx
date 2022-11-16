@@ -58,7 +58,7 @@ export default function createFastContext<Store>(initialState: Store) {
     const state = useSyncExternalStore(
       store.subscribe,
       () => selector(store.get()),
-      () => selector(initialState),
+      () => selector(initialState)
     );
 
     return [state, store.set];

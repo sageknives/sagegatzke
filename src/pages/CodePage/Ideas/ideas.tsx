@@ -4,7 +4,10 @@ import { Page } from "../../../components";
 export const Ideas: FunctionComponent = () => (
   <Page title="Ideas">
     <ul>
-      <li>Sidebar and main code page should share the examples but display them differently and add a back button</li>
+      <li>
+        Sidebar and main code page should share the examples but display them
+        differently and add a back button
+      </li>
       <li>Aliasing the root folders would be nice</li>
       <li>upgrade react</li>
       <li>get a better linter</li>
@@ -33,4 +36,4 @@ export const Ideas: FunctionComponent = () => (
   </Page>
 );
 
-Ideas.displayName = 'Ideas'
+Ideas.displayName = "Ideas";
