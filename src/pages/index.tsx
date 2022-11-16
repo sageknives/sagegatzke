@@ -1,18 +1,5 @@
-import { AboutPage } from "./AboutPage";
-import { ContactPage } from "./ContactPage";
-import { ExperiencePage } from "./Experience";
-
-export const pages = [
-  {
-    label: AboutPage.displayName,
-    content: <AboutPage />,
-  },
-  {
-    label: ExperiencePage.displayName,
-    content: <ExperiencePage />,
-  },
-  {
-    label: ContactPage.displayName,
-    content: <ContactPage />,
-  },
-];
+export * from './AboutPage'
+export * from './ContactPage'
+export * from './Experience'
+export * from './RootPage'
+export * from './CodePage'

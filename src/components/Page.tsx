@@ -1,40 +1,19 @@
-import { Typography, Box, Toolbar } from "@mui/material";
+import { Typography, Box, Toolbar, BoxProps } from "@mui/material";
 import { FunctionComponent } from "react";
 
-export interface PageProps {
-  title: string;
-  children: React.ReactNode;
+export interface PageProps extends BoxProps {
+  title?: string;
 }
 
-export const Page: FunctionComponent<PageProps> = ({ title, children }) => (
-  <Box id={`${title}`} minHeight="100vh" pt={2}>
+export const Page: FunctionComponent<PageProps> = ({ title, children, ...props }) => (
+  <Box id={`${title}`} minHeight="100vh" px={3} pt={2} {...props}>
     <Toolbar
       sx={(theme) => ({
-        [theme.breakpoints.down("sm")]: {
-          display: "none",
-        },
+        display: { xs: "none", sm: "inherit" },
+        height: theme.mixins.toolbar.minHeight,
       })}
     />
-    <Typography
-      variant="h4"
-      // sx={(theme) => ({
-      //   position: "sticky",
-      //   background: theme.palette.background.default,
-      //   marginX: -3,
-      //   marginTop: -2,
-      //   paddingX: 3,
-      //   zIndex: 3,
-      //   boxShadow: theme.shadows[1],
-      //   top: 0,
-      //   [theme.breakpoints.up("sm")]:{
-      //     top: `${
-      //       (Number.parseInt((theme.mixins.toolbar.minHeight || '').toString(), 10) || 0) + 8
-      //     }px`,
-      //   }
-      // })}
-    >
-      {title}
-    </Typography>
+    {title && <Typography variant="h4">{title}</Typography>}
     {children}
     <Toolbar
       sx={(theme) => ({

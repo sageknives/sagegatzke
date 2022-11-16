@@ -1,10 +1,11 @@
 import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { FunctionComponent } from "react";
-import { pages } from "../pages";
 import "./App.css";
 import { AppNavigationBar } from "./AppNavigationBar";
 import { theme } from "../theme";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { routes } from "../routes";
+import { GlobalStylesOverride } from "./GlobalStylesOverride";
 
 export const App: FunctionComponent = () => {
   return (
@@ -12,12 +13,27 @@ export const App: FunctionComponent = () => {
       <BrowserRouter>
         <Box>
           <CssBaseline />
+          <GlobalStylesOverride />
           <AppNavigationBar />
-          <Box component="main" px={3}>
-            {pages.map(({ content, label }) => (
-              <div key={label}>{content}</div>
+          <Routes>
+            {routes.map((route) => (
+              <Route
+                key={route.path || "index"}
+                index={route.index}
+                path={route.path}
+                element={<route.component />}
+              >
+                {route.routes?.map((subRoute) => (
+                  <Route
+                    key={subRoute.path || "index"}
+                    index={subRoute.index}
+                    path={subRoute.path}
+                    element={<subRoute.component />}
+                  />
+                ))}
+              </Route>
             ))}
-          </Box>
+          </Routes>
         </Box>
       </BrowserRouter>
     </ThemeProvider>

@@ -7,24 +7,39 @@ import {
   IconButton,
   List,
   ListItem,
-  ListItemButton,
   ListItemText,
   Toolbar,
   Typography,
-  useMediaQuery,
 } from "@mui/material";
-import { useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { pages } from "../pages";
+import { Link } from "../components";
+import { globalNavigation } from "../constants";
 
 export const AppNavigationBar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const isDesktop = useMediaQuery("sm");
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
   const { hash } = useLocation();
-  const selectedRoute = hash ? hash.slice(1) : 'About';
+  const selectedRoute = hash ? hash.slice(1) : "Toolkit";
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const element = document.querySelector(`#${selectedRoute}`);
+      if (element) {
+        const topPos = element.getBoundingClientRect().top + window.pageYOffset;
+
+        window.scrollTo({
+          top: topPos, // scroll so that the element is at the top of the view
+          behavior: "smooth", // smooth scroll
+        });
+      }
+    }, 300);
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [selectedRoute]);
+
   const drawer = (
     <Box
       onClick={handleDrawerToggle}
@@ -55,29 +70,23 @@ export const AppNavigationBar = () => {
         </IconButton>
       </Toolbar>
       <List sx={{ flex: "1 1 auto", overflow: "scroll" }} disablePadding>
-        {pages.map(({ label }) => (
+        {globalNavigation.map(({ label, path }) => (
           <ListItem
             key={label}
-            disablePadding
+            // @ts-ignore
+            button
+            component={Link}
+            to={`./${path}`}
             sx={{
               borderTop: "1px solid black",
             }}
           >
-            <ListItemButton
+            <ListItemText
+              primary={label}
               sx={{
-                textAlign: "center",
+                color: selectedRoute === label ? "white" : "#D5D7CE",
               }}
-              LinkComponent="a"
-              href={`#${label}`}
-            >
-              <ListItemText
-                primary={label}
-                sx={{
-                  textTransform: "capitalize",
-                  color: selectedRoute === label ? "white" : "#D5D7CE",
-                }}
-              />
-            </ListItemButton>
+            />
           </ListItem>
         ))}
       </List>
@@ -116,12 +125,14 @@ export const AppNavigationBar = () => {
             <Menu />
           </IconButton>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {pages.map(({ label }) => (
+            {globalNavigation.map(({ label, path }) => (
               <Button
                 key={label}
                 sx={{ color: selectedRoute === label ? "white" : "#D5D7CE" }}
-                LinkComponent="a"
-                href={`#${label}`}
+                LinkComponent={forwardRef((props, ref) => (
+                  <Link ref={ref} {...props} to={`./${path}`} />
+                ))}
+                href={`./${path}`}
               >
                 {label}
               </Button>
@@ -132,7 +143,7 @@ export const AppNavigationBar = () => {
       <Box component="nav">
         <Drawer
           variant="temporary"
-          anchor={isDesktop ? "left" : "bottom"}
+          anchor="bottom"
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{

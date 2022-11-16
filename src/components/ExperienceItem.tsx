@@ -15,7 +15,7 @@ export const ExperienceItem: FunctionComponent<Experience> = ({
   accomplishments,
 }) => (
   <>
-    <Typography component="p" mt={4} variant="overline">
+    <Typography component="p" mt="var(--space150)" variant="overline">
       {title}
     </Typography>
     <Divider />
