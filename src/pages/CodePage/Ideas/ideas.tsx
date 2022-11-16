@@ -1,5 +1,5 @@
-import { FunctionComponent } from "react";
-import { Page } from "../../../components";
+import { FunctionComponent } from 'react'
+import { Page } from '../../../components'
 
 export const Ideas: FunctionComponent = () => (
   <Page title="Ideas">
@@ -34,6 +34,6 @@ export const Ideas: FunctionComponent = () => (
       </li>
     </ul>
   </Page>
-);
+)
 
-Ideas.displayName = "Ideas";
+Ideas.displayName = 'Ideas'

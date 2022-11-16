@@ -1,6 +1,6 @@
-import { FunctionComponent } from "react";
-import { Page, ExperienceItem } from "../../components";
-import { experiences } from "../../constants/experiences";
+import { FunctionComponent } from 'react'
+import { Page, ExperienceItem } from '../../components'
+import { experiences } from '../../constants/experiences'
 
 export const ExperiencePage: FunctionComponent = () => (
   <Page title="Experience">
@@ -32,6 +32,6 @@ export const ExperiencePage: FunctionComponent = () => (
 + Customer Support, Lead Fraud Prevention Agent.
     </Typography> */}
   </Page>
-);
+)
 
-ExperiencePage.displayName = "Experience";
+ExperiencePage.displayName = 'Experience'

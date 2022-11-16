@@ -5,7 +5,7 @@ import {
   Switch,
   TextField,
   Typography,
-} from "@mui/material";
+} from '@mui/material'
 import React, {
   createContext,
   FunctionComponent,
@@ -14,54 +14,52 @@ import React, {
   useContext,
   useMemo,
   useState,
-} from "react";
-import { Page } from "../../../components";
-import createFastContext from "../../../context/FastContext";
-import { useRenderCheck } from "./RenderHighlight";
+} from 'react'
+import { Page } from '../../../components'
+import createFastContext from '../../../context/FastContext'
+import { useRenderCheck } from './RenderHighlight'
 
 const initialValue = {
-  firstName: "",
-  lastName: "",
-};
+  firstName: '',
+  lastName: '',
+}
 
-const { Provider: FastProvider, useStore } = createFastContext(initialValue);
+const { Provider: FastProvider, useStore } = createFastContext(initialValue)
 const ReactContext = createContext({
   state: initialValue,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   onUpdate: (update: Partial<typeof initialValue>) => {},
-});
+})
 
 const Provider: FunctionComponent<PropsWithChildren> = ({ children }) => {
-  const [state, setState] = useState(initialValue);
+  const [state, setState] = useState(initialValue)
   const onUpdate = useCallback((update: Partial<typeof initialValue>) => {
-    setState((cur) => ({ ...cur, ...update }));
-  }, []);
+    setState((cur) => ({ ...cur, ...update }))
+  }, [])
   const value = useMemo(
     () => ({
       state,
       onUpdate,
     }),
     [onUpdate, state]
-  );
-  return (
-    <ReactContext.Provider value={value}>{children}</ReactContext.Provider>
-  );
-};
+  )
+  return <ReactContext.Provider value={value}>{children}</ReactContext.Provider>
+}
 
 const Field: FunctionComponent<{
-  storeKey: keyof typeof initialValue;
-  isFast: boolean;
+  storeKey: keyof typeof initialValue
+  isFast: boolean
 }> = ({ storeKey, isFast }) => {
-  const check = useRenderCheck();
-  const [value, setValue] = useStore((store) => store[storeKey]);
-  const { state, onUpdate } = useContext(ReactContext);
+  const check = useRenderCheck()
+  const [value, setValue] = useStore((store) => store[storeKey])
+  const { state, onUpdate } = useContext(ReactContext)
   const onChange = useCallback(
     (event: any) => {
-      const callback = isFast ? setValue : onUpdate;
-      callback({ [storeKey]: event.target.value as string });
+      const callback = isFast ? setValue : onUpdate
+      callback({ [storeKey]: event.target.value as string })
     },
     [isFast, onUpdate, setValue, storeKey]
-  );
+  )
   return (
     <TextField
       value={isFast ? value : state[storeKey]}
@@ -69,28 +67,28 @@ const Field: FunctionComponent<{
       label={storeKey}
       {...check}
     />
-  );
-};
+  )
+}
 
 const DisplayField: FunctionComponent<{
-  storeKey: keyof typeof initialValue;
-  isFast: boolean;
+  storeKey: keyof typeof initialValue
+  isFast: boolean
 }> = ({ storeKey, isFast }) => {
-  const check = useRenderCheck();
-  const [value] = useStore((store) => store[storeKey]);
-  const { state } = useContext(ReactContext);
+  const check = useRenderCheck()
+  const [value] = useStore((store) => store[storeKey])
+  const { state } = useContext(ReactContext)
   return (
     <Typography variant="h6" {...check}>
-      {(isFast ? value : state[storeKey]) || "None"}
+      {(isFast ? value : state[storeKey]) || 'None'}
     </Typography>
-  );
-};
+  )
+}
 
 export const Context: FunctionComponent = () => {
-  const [isFast, setFast] = useState(true);
+  const [isFast, setFast] = useState(true)
   const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setFast(e.target.checked);
-  }, []);
+    setFast(e.target.checked)
+  }, [])
 
   return (
     <Page title="Context">
@@ -116,7 +114,7 @@ export const Context: FunctionComponent = () => {
         </FastProvider>
       </Provider>
     </Page>
-  );
-};
+  )
+}
 
-Context.displayName = "Context";
+Context.displayName = 'Context'

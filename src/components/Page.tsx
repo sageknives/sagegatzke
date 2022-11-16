@@ -1,8 +1,8 @@
-import { Typography, Box, Toolbar, BoxProps } from "@mui/material";
-import { FunctionComponent } from "react";
+import { Typography, Box, Toolbar, BoxProps } from '@mui/material'
+import { FunctionComponent } from 'react'
 
 export interface PageProps extends BoxProps {
-  title?: string;
+  title?: string
 }
 
 export const Page: FunctionComponent<PageProps> = ({
@@ -13,7 +13,7 @@ export const Page: FunctionComponent<PageProps> = ({
   <Box id={`${title}`} minHeight="100vh" px={3} pt={2} {...props}>
     <Toolbar
       sx={(theme) => ({
-        display: { xs: "none", sm: "inherit" },
+        display: { xs: 'none', sm: 'inherit' },
         height: theme.mixins.toolbar.minHeight,
       })}
     />
@@ -21,10 +21,10 @@ export const Page: FunctionComponent<PageProps> = ({
     {children}
     <Toolbar
       sx={(theme) => ({
-        [theme.breakpoints.up("sm")]: {
-          display: "none",
+        [theme.breakpoints.up('sm')]: {
+          display: 'none',
         },
       })}
     />
   </Box>
-);
+)

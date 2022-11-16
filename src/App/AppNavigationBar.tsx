@@ -1,4 +1,4 @@
-import { Close, Menu } from "@mui/icons-material";
+import { Close, Menu } from '@mui/icons-material'
 import {
   AppBar,
   Box,
@@ -10,50 +10,50 @@ import {
   ListItemText,
   Toolbar,
   Typography,
-} from "@mui/material";
-import { forwardRef, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { Link } from "../components";
-import { globalNavigation } from "../constants";
+} from '@mui/material'
+import { forwardRef, useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import { Link } from '../components'
+import { globalNavigation } from '../constants'
 
 export const AppNavigationBar = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false)
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-  const { hash } = useLocation();
-  const selectedRoute = hash ? hash.slice(1) : "Toolkit";
+    setMobileOpen(!mobileOpen)
+  }
+  const { hash } = useLocation()
+  const selectedRoute = hash ? hash.slice(1) : 'Code'
   useEffect(() => {
     const timeout = setTimeout(() => {
-      const element = document.querySelector(`#${selectedRoute}`);
+      const element = document.querySelector(`#${selectedRoute}`)
       if (element) {
-        const topPos = element.getBoundingClientRect().top + window.pageYOffset;
+        const topPos = element.getBoundingClientRect().top + window.pageYOffset
 
         window.scrollTo({
           top: topPos, // scroll so that the element is at the top of the view
-          behavior: "smooth", // smooth scroll
-        });
+          behavior: 'smooth', // smooth scroll
+        })
       }
-    }, 300);
+    }, 300)
     return () => {
-      clearTimeout(timeout);
-    };
-  }, [selectedRoute]);
+      clearTimeout(timeout)
+    }
+  }, [selectedRoute])
 
   const drawer = (
     <Box
       onClick={handleDrawerToggle}
-      sx={{ textAlign: "center" }}
+      sx={{ textAlign: 'center' }}
       maxHeight="75vh"
       display="flex"
       flexDirection="column"
     >
       <Toolbar
         sx={{
-          background: "#404923",
-          borderTop: "1px solid black",
-          display: "flex",
-          justifyContent: "space-between",
+          background: '#404923',
+          borderTop: '1px solid black',
+          display: 'flex',
+          justifyContent: 'space-between',
         }}
       >
         <Typography variant="h6" component="div" color="#D5D7CE">
@@ -64,12 +64,12 @@ export const AppNavigationBar = () => {
           aria-label="open drawer"
           edge="start"
           onClick={handleDrawerToggle}
-          sx={{ mr: 2, display: { sm: "none" }, color: "#D5D7CE" }}
+          sx={{ mr: 2, display: { sm: 'none' }, color: '#D5D7CE' }}
         >
           <Close />
         </IconButton>
       </Toolbar>
-      <List sx={{ flex: "1 1 auto", overflow: "scroll" }} disablePadding>
+      <List sx={{ flex: '1 1 auto', overflow: 'scroll' }} disablePadding>
         {globalNavigation.map(({ label, path }) => (
           <ListItem
             key={label}
@@ -79,20 +79,20 @@ export const AppNavigationBar = () => {
             component={Link}
             to={`./${path}`}
             sx={{
-              borderTop: "1px solid black",
+              borderTop: '1px solid black',
             }}
           >
             <ListItemText
               primary={label}
               sx={{
-                color: selectedRoute === label ? "white" : "#D5D7CE",
+                color: selectedRoute === label ? 'white' : '#D5D7CE',
               }}
             />
           </ListItem>
         ))}
       </List>
     </Box>
-  );
+  )
 
   return (
     <>
@@ -101,9 +101,9 @@ export const AppNavigationBar = () => {
         sx={(theme) => ({
           top: 0,
           minHeight: 0,
-          [theme.breakpoints.down("sm")]: {
-            position: "fixed",
-            top: "auto",
+          [theme.breakpoints.down('sm')]: {
+            position: 'fixed',
+            top: 'auto',
             bottom: 0,
           },
         })}
@@ -112,7 +112,7 @@ export const AppNavigationBar = () => {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "block", sm: "block" } }}
+            sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}
           >
             Sage Gatzke
           </Typography>
@@ -121,15 +121,15 @@ export const AppNavigationBar = () => {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" }, color: "#D5D7CE" }}
+            sx={{ mr: 2, display: { sm: 'none' }, color: '#D5D7CE' }}
           >
             <Menu />
           </IconButton>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {globalNavigation.map(({ label, path }) => (
               <Button
                 key={label}
-                sx={{ color: selectedRoute === label ? "white" : "#D5D7CE" }}
+                sx={{ color: selectedRoute === label ? 'white' : '#D5D7CE' }}
                 LinkComponent={forwardRef((props, ref) => (
                   <Link ref={ref} {...props} to={`./${path}`} />
                 ))}
@@ -151,10 +151,10 @@ export const AppNavigationBar = () => {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: "100%",
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: '100%',
             },
           }}
         >
@@ -162,5 +162,5 @@ export const AppNavigationBar = () => {
         </Drawer>
       </Box>
     </>
-  );
-};
+  )
+}

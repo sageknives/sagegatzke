@@ -1,4 +1,4 @@
-import { Done } from "@mui/icons-material";
+import { Done } from '@mui/icons-material'
 import {
   Divider,
   List,
@@ -6,9 +6,9 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
-} from "@mui/material";
-import { FunctionComponent } from "react";
-import { Experience } from "../types/experience";
+} from '@mui/material'
+import { FunctionComponent } from 'react'
+import { Experience } from '../types/experience'
 
 export const ExperienceItem: FunctionComponent<Experience> = ({
   title,
@@ -30,4 +30,4 @@ export const ExperienceItem: FunctionComponent<Experience> = ({
       ))}
     </List>
   </>
-);
+)

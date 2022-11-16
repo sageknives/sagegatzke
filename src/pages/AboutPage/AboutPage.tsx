@@ -1,8 +1,8 @@
-import { Typography, Box } from "@mui/material";
-import { FunctionComponent } from "react";
-import { Gallery } from "../../components/Gallery";
-import { Page } from "../../components/Page";
-import { gallery } from "../../constants";
+import { Typography, Box } from '@mui/material'
+import { FunctionComponent } from 'react'
+import { Gallery } from '../../components/Gallery'
+import { Page } from '../../components/Page'
+import { gallery } from '../../constants'
 
 export const AboutPage: FunctionComponent = () => (
   <Page title="About">
@@ -18,6 +18,6 @@ export const AboutPage: FunctionComponent = () => (
       </Box>
     </Box>
   </Page>
-);
+)
 
-AboutPage.displayName = "About";
+AboutPage.displayName = 'About'

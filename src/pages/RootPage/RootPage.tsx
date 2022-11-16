@@ -1,6 +1,6 @@
-import { Box } from "@mui/material";
-import { FunctionComponent } from "react";
-import { Pages } from "../../constants";
+import { Box } from '@mui/material'
+import { FunctionComponent } from 'react'
+import { Pages } from '../../constants'
 
 export const RootPage: FunctionComponent = () => (
   <Box component="main">
@@ -10,6 +10,6 @@ export const RootPage: FunctionComponent = () => (
       </div>
     ))}
   </Box>
-);
+)
 
-RootPage.displayName = "Root";
+RootPage.displayName = 'Root'

@@ -1,8 +1,8 @@
-import { Box, Typography } from "@mui/material";
-import { FunctionComponent } from "react";
+import { Box, Typography } from '@mui/material'
+import { FunctionComponent } from 'react'
 
 export const TableOfContents: FunctionComponent<{
-  items: Array<{ title: string; description: string }>;
+  items: Array<{ title: string; description: string }>
 }> = ({ items }) => {
   return (
     <Box>
@@ -13,5 +13,5 @@ export const TableOfContents: FunctionComponent<{
         </Box>
       ))}
     </Box>
-  );
-};
+  )
+}

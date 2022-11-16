@@ -1,7 +1,7 @@
 export interface Accomplishment {
-  description: string;
+  description: string
 }
 export interface Experience {
-  title: string;
-  accomplishments: Array<Accomplishment>;
+  title: string
+  accomplishments: Array<Accomplishment>
 }

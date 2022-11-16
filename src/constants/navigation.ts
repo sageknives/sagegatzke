@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent } from 'react'
 import {
   CodePage,
   Context,
@@ -6,35 +6,35 @@ import {
   AboutPage,
   ContactPage,
   ExperiencePage,
-} from "../pages";
-import { Components } from "../pages/CodePage/Components";
-import { Ideas } from "../pages/CodePage/Ideas";
-import { SideBar } from "../pages/CodePage/SideBar";
-import { Typescript } from "../pages/CodePage/Typescript";
+} from '../pages'
+import { Components } from '../pages/CodePage/Components'
+import { Ideas } from '../pages/CodePage/Ideas'
+import { SideBar } from '../pages/CodePage/SideBar'
+import { Typescript } from '../pages/CodePage/Typescript'
 
 interface Section {
-  label?: string;
-  path: string;
-  component: FunctionComponent;
+  label?: string
+  path: string
+  component: FunctionComponent
 }
 
-const categories = ["Stores", "Typescript", "Components", "Ideas"] as const;
+const categories = ['Stores', 'Typescript', 'Components', 'Ideas'] as const
 
 export interface Page {
-  index?: boolean;
-  label?: string;
-  path?: string;
-  component: FunctionComponent;
-  pages?: Page[];
-  sections?: Section[];
-  category?: typeof categories[number];
+  index?: boolean
+  label?: string
+  path?: string
+  component: FunctionComponent
+  pages?: Page[]
+  sections?: Section[]
+  category?: typeof categories[number]
 }
 
 export const Pages: { [x: string]: Page } = {
   home: {
     index: true,
     label: RootPage.displayName,
-    path: "/",
+    path: '/',
     component: RootPage,
     sections: [
       {
@@ -55,13 +55,13 @@ export const Pages: { [x: string]: Page } = {
     ],
   },
   code: {
-    path: "code",
+    path: 'code',
     component: CodePage,
     label: CodePage.displayName,
     pages: [
       {
         index: true,
-        path: "",
+        path: '',
         component: SideBar,
         label: SideBar.displayName,
       },
@@ -69,34 +69,34 @@ export const Pages: { [x: string]: Page } = {
         path: Context.displayName?.toLowerCase(),
         component: Context,
         label: Context.displayName,
-        category: "Stores",
+        category: 'Stores',
       },
       {
         path: Typescript.displayName?.toLowerCase(),
         component: Typescript,
         label: Typescript.displayName,
-        category: "Typescript",
+        category: 'Typescript',
       },
       {
         path: Components.displayName?.toLowerCase(),
         component: Components,
         label: Components.displayName,
-        category: "Components",
+        category: 'Components',
       },
       {
         path: Ideas.displayName?.toLowerCase(),
         component: Ideas,
         label: Ideas.displayName,
-        category: "Ideas",
+        category: 'Ideas',
       },
     ],
   },
-};
-export const globalNavigation = [...(Pages.home.sections || []), Pages.code];
+}
+export const globalNavigation = [...(Pages.home.sections || []), Pages.code]
 
 export const codeSections = categories.map((item) => ({
   title: item,
   examples: Pages.code.pages
     ?.filter(({ category }) => category === item)
     .map(({ path }) => path) as string[],
-}));
+}))
