@@ -1,50 +1,24 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { GlobalStyles } from '@mui/material'
+import { GlobalStyles, Breakpoint } from '@mui/material'
 import { FunctionComponent } from 'react'
+import { spacing, SpacingType } from '../constants'
 
-const desktopSpacingArray = [
-  { key: '--space0125', value: '.125rem' },
-  { key: '--space025', value: '.025rem' },
-  { key: '--space050', value: '.50rem' },
-  { key: '--space075', value: '.75rem' },
-  { key: '--space100', value: '1rem' },
-  { key: '--space150', value: '1.5rem' },
-  { key: '--space200', value: '2rem' },
-  { key: '--space250', value: '2.5rem' },
-  { key: '--space300', value: '3rem' },
-  { key: '--space400', value: '4rem' },
-]
-const mobileSpacingArray = [
-  { key: '--space0125', value: '.125rem' },
-  { key: '--space025', value: '.025rem' },
-  { key: '--space050', value: '.50rem' },
-  { key: '--space075', value: '.75rem' },
-  { key: '--space100', value: '1rem' },
-  { key: '--space150', value: '1.5rem' },
-  { key: '--space200', value: '2rem' },
-  { key: '--space250', value: '2.5rem' },
-  { key: '--space300', value: '3rem' },
-  { key: '--space400', value: '4rem' },
-]
-const desktopSpacing = desktopSpacingArray.reduce((acc, { key, value }) => {
-  acc[`${key}`] = value
-  return acc
-}, {} as any)
-
-const mobileSpacing = mobileSpacingArray.reduce((acc, { key, value }) => {
-  acc[`${key}`] = value
-  return acc
-}, {} as any)
+const calculateCSSVariableSpacing = (x: Breakpoint) =>
+  (Object.keys(spacing) as SpacingType[]).reduce<{
+    [key in SpacingType]?: string
+  }>((acc, key) => {
+    acc[key] = spacing[key][x] ?? undefined
+    return acc
+  }, {} as { [key in SpacingType]?: string })
 
 export const GlobalStylesOverride: FunctionComponent = () => (
   <GlobalStyles
     styles={{
       ':root': {
-        ...mobileSpacing,
+        ...calculateCSSVariableSpacing('xs'),
       },
       '@media(max-width: 600px)': {
         ':root': {
-          ...desktopSpacing,
+          ...calculateCSSVariableSpacing('sm'),
         },
       },
       '@keyframes render1': {

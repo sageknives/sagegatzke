@@ -1,5 +1,10 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as CSS from 'csstype'
 import { SpacingProps } from '@mui/system/spacing'
+// import { SpacingType } from '../constants'
+
+// type SetKey<T extends string> = `var(${T})`
+// type VarSpacing = SetKey<SpacingType>
 
 type Spacing =
   | 'var(--space0125)'
