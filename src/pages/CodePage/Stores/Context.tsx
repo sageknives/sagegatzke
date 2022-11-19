@@ -94,7 +94,7 @@ export const Context: FunctionComponent = () => {
     <Page title="Context">
       <Provider>
         <FastProvider>
-          <Box display="flex" flexDirection="column" gap="1rem">
+          <Box display="flex" flexDirection="column" gap="var(--space100)">
             <Typography variant="h6">
               Fast Context vs Regular Context
             </Typography>

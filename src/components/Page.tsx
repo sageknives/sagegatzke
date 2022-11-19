@@ -10,8 +10,17 @@ export const Page: FunctionComponent<PageProps> = ({
   children,
   ...props
 }) => (
-  <Box id={`${title}`} minHeight="100vh" px={3} pt={2} {...props}>
+  <Box
+    id={`${title}`}
+    minHeight="100vh"
+    px="var(--space300)"
+    pt="var(--space200)"
+    {...props}
+  >
     <Toolbar
+      /** @todo fix this sx typescript problem  height?*/
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       sx={(theme) => ({
         display: { xs: 'none', sm: 'inherit' },
         height: theme.mixins.toolbar.minHeight,

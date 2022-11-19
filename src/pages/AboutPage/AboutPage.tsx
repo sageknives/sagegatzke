@@ -6,7 +6,12 @@ import { gallery } from '../../constants'
 
 export const AboutPage: FunctionComponent = () => (
   <Page title="About">
-    <Box display="flex" flexDirection="column" gap={2} pt={2}>
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap="var(--space200)"
+      pt="var(--space200)"
+    >
       <Gallery gallery={gallery} />
       <Box>
         <Typography>

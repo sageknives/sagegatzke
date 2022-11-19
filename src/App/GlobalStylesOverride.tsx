@@ -1,6 +1,7 @@
 import { GlobalStyles, Breakpoint } from '@mui/material'
 import { FunctionComponent } from 'react'
-import { spacing, SpacingType } from '../constants'
+import { spacing } from '../constants'
+import { SpacingType } from '../types/css'
 
 const calculateCSSVariableSpacing = (x: Breakpoint) =>
   (Object.keys(spacing) as SpacingType[]).reduce<{

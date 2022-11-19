@@ -4,7 +4,7 @@ import { Page } from '../../components/Page'
 
 export const ContactPage: FunctionComponent = () => (
   <Page title="Contact">
-    <Box textAlign="center" py={2}>
+    <Box textAlign="center" py="var(--space200)">
       <Typography>Sage Gatzke</Typography>
       <Typography>Seattle, WA 98105</Typography>
       <Typography>

@@ -1,22 +1,10 @@
 import { Breakpoint } from '@mui/material'
+import { SpacingType } from '../types/css'
 
-export type SpacingType =
-  | '--space0125'
-  | '--space025'
-  | '--space050'
-  | '--space075'
-  | '--space100'
-  | '--space150'
-  | '--space200'
-  | '--space250'
-  | '--space300'
-  | '--space400'
+type ResponsiveValue<T> = { [key in Breakpoint]?: T }
 
-type ResponsiveValue = {
-  [key in Breakpoint]?: `${number}rem`
-}
 type ResponsiveCssVariable = {
-  [key in SpacingType]: ResponsiveValue
+  [key in SpacingType]: ResponsiveValue<`${number}rem`>
 }
 
 export const spacing: ResponsiveCssVariable = {

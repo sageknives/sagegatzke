@@ -18,7 +18,7 @@ export const Gallery: FunctionComponent<GalleryProps> = ({
     <Box
       display="flex"
       justifyContent="center"
-      gap={1}
+      gap="var(--space100)"
       flexDirection={direction}
     >
       {images.map(({ src, alt }) => (
