@@ -1,17 +1,13 @@
-import React, {
-  useRef,
-  createContext,
-  useContext,
-  useCallback,
-  useSyncExternalStore,
-} from 'react'
+import React, { useRef, createContext, useContext, useCallback, useSyncExternalStore } from 'react'
+
+interface FastContextReturn<T> {
+  get: () => T
+  set: (value: Partial<T>) => void
+  subscribe: (callback: () => void) => () => void
+}
 
 export default function createFastContext<Store>(initialState: Store) {
-  function useStoreData(): {
-    get: () => Store
-    set: (value: Partial<Store>) => void
-    subscribe: (callback: () => void) => () => void
-  } {
+  function useStoreData(): FastContextReturn<Store> {
     const store = useRef(initialState)
 
     const get = useCallback(() => store.current, [])
@@ -20,7 +16,7 @@ export default function createFastContext<Store>(initialState: Store) {
 
     const set = useCallback((value: Partial<Store>) => {
       store.current = { ...store.current, ...value }
-      subscribers.current.forEach((callback) => callback())
+      subscribers.current.forEach(callback => callback())
     }, [])
 
     const subscribe = useCallback((callback: () => void) => {
@@ -40,11 +36,7 @@ export default function createFastContext<Store>(initialState: Store) {
   const StoreContext = createContext<UseStoreDataReturnType | null>(null)
 
   function Provider({ children }: { children: React.ReactNode }) {
-    return (
-      <StoreContext.Provider value={useStoreData()}>
-        {children}
-      </StoreContext.Provider>
-    )
+    return <StoreContext.Provider value={useStoreData()}>{children}</StoreContext.Provider>
   }
 
   function useStore<SelectorOutput>(

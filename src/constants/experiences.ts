@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import { Experience } from '../types/experience'
 
 export const experiences: Experience[] = [
@@ -54,9 +55,28 @@ export const experiences: Experience[] = [
           'Typescript Express, API used for Ionic apps. JWT, Mongo, Firebase for notifications.',
       },
       {
-        description:
-          'Developed prototypes for clients and internal projects for iOS and Android.',
+        description: 'Developed prototypes for clients and internal projects for iOS and Android.',
       },
     ],
   },
 ]
+
+// ​​2015 - 2016 ​Software developer– Puget Works
+// + Created an Ionic 1 app prototype for client.
+// ​​2014 - 2015​IT Intern – Trupanion LLC
+// + Created an MVC C#, JS Web-App. Updated settings for different environments.
+// + Created a WPF application that used Jira web services to save information for compliance reports.
+
+// ​​2013 - 2014​Web developer and tester – Ososlo LLC
+// + JavaScript, PHP, Magento.
+// + Installed and tested plugins for a Magento ecommerce website.
+
+// ​​2013 – 2014​Teacher Assistant/Tutor – Seattle Central College
+// + Java, Android, PHP, C#, JavaScript, ASP.NET, WordPress, Theory of Design.
+// + Helped create lesson plans, provided tutoring.
+
+// ​​2013 - 2013​C# Programmer – World Health Organization
+// + Created a ClickOnce app that interacted & updated specific WHO applications.
+
+// ​​2008 - 2012​Lead/Assistant Manager– Health Solutions Network
+// + Customer Support, Lead Fraud Prevention Agent.

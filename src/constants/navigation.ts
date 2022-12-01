@@ -1,102 +1,125 @@
-import { FunctionComponent } from 'react'
-import {
-  CodePage,
-  Context,
-  RootPage,
-  AboutPage,
-  ContactPage,
-  ExperiencePage,
-} from '../pages'
-import { Components } from '../pages/CodePage/Components'
-import { Ideas } from '../pages/CodePage/Ideas'
-import { SideBar } from '../pages/CodePage/SideBar'
-import { Typescript } from '../pages/CodePage/Typescript'
-
 interface Section {
-  label?: string
-  path: string
-  component: FunctionComponent
+  component: string
+  label: string
 }
 
 const categories = ['Stores', 'Typescript', 'Components', 'Ideas'] as const
 
 export interface Page {
+  label: string
   index?: boolean
-  label?: string
-  path?: string
-  component: FunctionComponent
+  component: string
   pages?: Page[]
   sections?: Section[]
   category?: typeof categories[number]
+  description?: string
 }
 
-export const Pages: { [x: string]: Page } = {
+type RootPages = 'home' | 'code'
+
+export const Pages: { [key in RootPages]: Page } = {
   home: {
     index: true,
-    label: RootPage.displayName,
-    path: '/',
-    component: RootPage,
+    label: '',
+    component: 'RootPage',
     sections: [
       {
-        label: AboutPage.displayName,
-        path: `#${AboutPage.displayName}`,
-        component: AboutPage,
+        component: 'AboutPage',
+        label: 'About',
       },
       {
-        label: ExperiencePage.displayName,
-        path: `#${ExperiencePage.displayName}`,
-        component: ExperiencePage,
+        component: 'ExperiencePage',
+        label: 'Experience',
       },
       {
-        label: ContactPage.displayName,
-        path: `#${ContactPage.displayName}`,
-        component: ContactPage,
+        component: 'ContactPage',
+        label: 'Contact',
       },
     ],
   },
   code: {
-    path: 'code',
-    component: CodePage,
-    label: CodePage.displayName,
+    label: 'Code',
+    component: 'CodePage',
     pages: [
       {
         index: true,
-        path: '',
-        component: SideBar,
-        label: SideBar.displayName,
+        label: '',
+        component: 'TableOfContents',
       },
       {
-        path: Context.displayName?.toLowerCase(),
-        component: Context,
-        label: Context.displayName,
-        category: 'Stores',
+        label: 'Stores',
+        description: 'Data Stores',
+        component: 'TableOfContents',
+        pages: [
+          {
+            label: 'Context',
+            description: 'Fast context example',
+            component: 'Context',
+          },
+        ],
       },
       {
-        path: Typescript.displayName?.toLowerCase(),
-        component: Typescript,
-        label: Typescript.displayName,
-        category: 'Typescript',
+        label: 'Typescript',
+        description: 'Typescript Examples',
+        component: 'TableOfContents',
+        pages: [
+          {
+            label: 'Typescript',
+            description: 'Coming Soon',
+            component: 'Typescript',
+          },
+        ],
       },
       {
-        path: Components.displayName?.toLowerCase(),
-        component: Components,
-        label: Components.displayName,
-        category: 'Components',
+        label: 'Components',
+        description: 'Component Examples',
+        component: 'TableOfContents',
+        pages: [
+          {
+            label: 'Components',
+            description: 'Coming Soon',
+            component: 'Components',
+          },
+        ],
       },
       {
-        path: Ideas.displayName?.toLowerCase(),
-        component: Ideas,
-        label: Ideas.displayName,
-        category: 'Ideas',
+        label: 'Ideas',
+        description: 'Idea Stuff',
+        component: 'TableOfContents',
+        pages: [
+          {
+            label: 'Ideas',
+            description: 'Todo list',
+            component: 'Ideas',
+          },
+        ],
       },
+      // {
+      //   label: 'Typescript',
+      //   description: 'Typescript stuff',
+      //   component: 'Typescript',
+      //   category: 'Typescript',
+      // },
+      // {
+      //   label: 'Components',
+      //   description: 'Component stuff',
+      //   component: 'Components',
+      //   category: 'Components',
+      // },
+      // {
+      //   label: 'Ideas',
+      //   description: 'Idea Stuff',
+      //   component: 'Ideas',
+      //   category: 'Ideas',
+      // },
     ],
   },
 }
-export const globalNavigation = [...(Pages.home.sections || []), Pages.code]
+export const globalNavigation: Array<Section | Page> = [...(Pages.home.sections || []), Pages.code]
 
-export const codeSections = categories.map((item) => ({
+export const codeSections = categories.map(item => ({
   title: item,
   examples: Pages.code.pages
     ?.filter(({ category }) => category === item)
-    .map(({ path }) => path) as string[],
+    .map(section => section.component) as string[],
 }))

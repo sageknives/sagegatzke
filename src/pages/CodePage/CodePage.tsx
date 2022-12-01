@@ -1,5 +1,5 @@
 import { Box, useMediaQuery, useTheme } from '@mui/material'
-import { FunctionComponent, useEffect } from 'react'
+import { FunctionComponent } from 'react'
 import { Outlet } from 'react-router-dom'
 import { SideBar } from './SideBar'
 
@@ -9,12 +9,6 @@ export const CodePage: FunctionComponent = () => {
   const theme = useTheme()
   const isDesktop = useMediaQuery(theme.breakpoints.up('sm'))
 
-  useEffect(() => {
-    if (isDesktop) {
-      console.log('isDesktop')
-    }
-  })
-
   return (
     <Box component="main" display="flex" flexDirection={{ sm: 'row' }}>
       {isDesktop && (
@@ -22,7 +16,7 @@ export const CodePage: FunctionComponent = () => {
           <SideBar sidebar />
         </Box>
       )}
-      <Box px="var(--space300)">
+      <Box>
         <Outlet />
       </Box>
     </Box>

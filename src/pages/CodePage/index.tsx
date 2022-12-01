@@ -1,2 +1,2 @@
 export * from './CodePage'
-export * from './Stores'
+export * from './TableOfContents'

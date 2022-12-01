@@ -22,7 +22,7 @@ export const AppNavigationBar = () => {
     setMobileOpen(!mobileOpen)
   }
   const { hash } = useLocation()
-  const selectedRoute = hash ? hash.slice(1) : 'Code'
+  const selectedRoute = hash ? hash.slice(1) : 'code'
   useEffect(() => {
     const timeout = setTimeout(() => {
       const element = document.querySelector(`#${selectedRoute}`)
@@ -70,26 +70,29 @@ export const AppNavigationBar = () => {
         </IconButton>
       </Toolbar>
       <List sx={{ flex: '1 1 auto', overflow: 'scroll' }} disablePadding>
-        {globalNavigation.map(({ label, path }) => (
-          <ListItem
-            key={label}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            button
-            component={Link}
-            to={`./${path}`}
-            sx={{
-              borderTop: '1px solid black',
-            }}
-          >
-            <ListItemText
-              primary={label}
+        {globalNavigation.map(item => {
+          const link = `./${'pages' in item ? '' : '#'}${item.label.toLocaleLowerCase()}`
+          return (
+            <ListItem
+              key={item.label}
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              button
+              component={Link}
+              to={link}
               sx={{
-                color: selectedRoute === label ? 'white' : '#D5D7CE',
+                borderTop: '1px solid black',
               }}
-            />
-          </ListItem>
-        ))}
+            >
+              <ListItemText
+                primary={item.label}
+                sx={{
+                  color: selectedRoute === item.label.toLocaleLowerCase() ? 'white' : '#D5D7CE',
+                }}
+              />
+            </ListItem>
+          )
+        })}
       </List>
     </Box>
   )
@@ -98,7 +101,7 @@ export const AppNavigationBar = () => {
     <>
       <AppBar
         component="nav"
-        sx={(theme) => ({
+        sx={theme => ({
           top: 0,
           minHeight: 0,
           [theme.breakpoints.down('sm')]: {
@@ -126,18 +129,25 @@ export const AppNavigationBar = () => {
             <Menu />
           </IconButton>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {globalNavigation.map(({ label, path }) => (
-              <Button
-                key={label}
-                sx={{ color: selectedRoute === label ? 'white' : '#D5D7CE' }}
-                LinkComponent={forwardRef((props, ref) => (
-                  <Link ref={ref} {...props} to={`./${path}`} />
-                ))}
-                href={`./${path}`}
-              >
-                {label}
-              </Button>
-            ))}
+            {globalNavigation.map(item => {
+              const link = `./${'pages' in item ? '' : '#'}${item.label.toLocaleLowerCase()}`
+              return (
+                <Button
+                  key={item.label}
+                  sx={{
+                    color: selectedRoute === item.label.toLocaleLowerCase() ? 'white' : '#D5D7CE',
+                  }}
+                  /** @TODO fix this */
+                  // eslint-disable-next-line react/no-unstable-nested-components
+                  LinkComponent={forwardRef((props, ref) => (
+                    <Link ref={ref} {...props} to={link} />
+                  ))}
+                  href={link}
+                >
+                  {item.label}
+                </Button>
+              )
+            })}
           </Box>
         </Toolbar>
       </AppBar>
