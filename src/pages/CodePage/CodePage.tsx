@@ -13,7 +13,7 @@ export const CodePage: FunctionComponent = () => {
     <Box component="main" display="flex" flexDirection={{ sm: 'row' }}>
       {isDesktop && (
         <Box bgcolor="olive" width={drawerWidth} minWidth={drawerWidth}>
-          <SideBar sidebar />
+          <SideBar />
         </Box>
       )}
       <Box>
